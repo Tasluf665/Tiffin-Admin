@@ -6,5 +6,8 @@ export default {
     Black: "#5E5D5D",
     Black2: "#313030",
     Black3: "#61605A",
-    Yellow: "#FFF700"
+    Black3: "#979797",
+    Yellow: "#FFF700",
+    Yellow2: "#EFAF00",
+    Green: "#056424"
 };
