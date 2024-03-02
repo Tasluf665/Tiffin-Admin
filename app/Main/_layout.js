@@ -1,14 +1,16 @@
 import { Tabs } from "expo-router/tabs";
+import CustomTabBar from "../../components/common/CustomTabBar";
 
 export default () => {
     return (
         <Tabs
+            tabBar={(props) => <CustomTabBar {...props} />}
             screenOptions={{ headerShown: false }}
         >
-            <Tabs.Screen name="OrderPage" />
-            <Tabs.Screen name="ProductPage" />
-            <Tabs.Screen name="RecordPage" />
-            <Tabs.Screen name="ExchangePage" />
+            <Tabs.Screen name="Order" />
+            <Tabs.Screen name="Product" />
+            <Tabs.Screen name="Record" />
+            <Tabs.Screen name="Exchange" />
         </Tabs>
     );
 };
