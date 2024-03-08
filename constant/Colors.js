@@ -10,5 +10,6 @@ export default {
     Black5: "#433F3F",
     Yellow: "#FFF700",
     Yellow2: "#EFAF00",
-    Green: "#056424"
+    Green: "#056424",
+    pink: "#FF235F"
 };
