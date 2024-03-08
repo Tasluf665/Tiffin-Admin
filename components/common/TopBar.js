@@ -23,16 +23,19 @@ export default function TopBar() {
                     <Switch
                         value={orderStatus}
                         onValueChange={() => setOrderStatus(state => !state)}
-                        circleSize={20}
-                        barHeight={20}
+                        circleSize={22}
+                        barHeight={22}
                         circleBorderWidth={2}
                         backgroundActive={Colors.Black}
-                        backgroundInactive={Colors.Black}
+                        backgroundInactive={Colors.Black4}
                         circleActiveColor={Colors.Yellow}
-                        circleInActiveColor={'#000000'}
+                        circleInActiveColor={Colors.Red}
                         changeValueImmediately={true} // if rendering inside circle, change state immediately or wait for animation to complete
-                        renderActiveText={false}
-                        renderInActiveText={false}
+                        renderActiveText={true}
+                        renderInActiveText={true}
+                        activeText={'On'}
+                        inActiveText={'Off'}
+                        switchWidthMultiplier={2.8}
                     />
                 </View>
             </View>
