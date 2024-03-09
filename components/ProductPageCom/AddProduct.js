@@ -2,6 +2,8 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'reac
 import React, { useState } from 'react'
 import { responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions'
 import * as ImagePicker from 'expo-image-picker';
+import Modal from "react-native-modal";
+import { AntDesign } from "@expo/vector-icons";
 
 import Colors from '../../constant/Colors'
 import CustomeFonts from '../../constant/CustomeFonts';
@@ -11,6 +13,7 @@ export default function AddProduct() {
     const [name, setName] = useState()
     const [price, setPrice] = useState()
     const [image, setImage] = useState(null);
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -84,8 +87,35 @@ export default function AddProduct() {
                     alignSelf: "center",
                     width: responsiveScreenWidth(85)
                 }}
-                onPress={() => { }}
+                onPress={() => setIsModalVisible(true)}
             />
+
+            <Modal isVisible={isModalVisible}>
+                <View style={styles.popupTopTextContainer}>
+                    <Image
+                        source={require("../../assets/ApplicationImage/ProductPage/Hand.png")}
+                        style={styles.popupViewIcon}
+                    />
+                    <Text style={styles.popupViewText}>Successfully received your request. Our management team will contract with you as soon as possible.</Text>
+                    <Text style={styles.popupViewText}>
+                        (Thank You)
+                    </Text>
+                    <TouchableOpacity
+                        style={styles.popupViewBtn}
+                        activeOpacity={0.8}
+                        onPress={() => { setIsModalVisible(false) }}
+                    >
+                        <View style={styles.popupBtnContainer}>
+                            <Text style={styles.popupOkText}>OK</Text>
+                            <AntDesign
+                                name="right"
+                                size={responsiveScreenFontSize(2.3)}
+                                style={styles.popupArrowIcon}
+                            />
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </Modal>
         </View>
     )
 }
@@ -170,5 +200,50 @@ const styles = StyleSheet.create({
     cancel: {
         fontFamily: CustomeFonts.Segoe_UI_Bold,
         color: Colors.Red
-    }
+    },
+
+    popupTopTextContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: Colors.White,
+        height: responsiveScreenHeight(30)
+    },
+
+    popupViewIcon: {
+        width: responsiveScreenHeight(10),
+        height: responsiveScreenHeight(10),
+        resizeMode: "contain",
+        marginBottom: responsiveScreenHeight(1),
+        marginRight: responsiveScreenWidth(5),
+    },
+    popupViewText: {
+        fontFamily: CustomeFonts.Segoe_UI_Bold,
+        fontSize: responsiveScreenFontSize(1.8),
+        textAlign: "center",
+        marginBottom: responsiveScreenHeight(1),
+        paddingHorizontal: responsiveScreenWidth(7)
+    },
+    popupViewBtn: {
+        width: "100%",
+        alignItems: "flex-end",
+    },
+    popupBtnContainer: {
+        backgroundColor: Colors.pink,
+        width: responsiveScreenWidth(16),
+        height: responsiveScreenHeight(3),
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        marginRight: responsiveScreenWidth(2),
+        borderRadius: 3,
+    },
+    popupOkText: {
+        color: Colors.White,
+        fontFamily: CustomeFonts.Segoe_UI_Bold,
+        fontSize: responsiveScreenFontSize(1.7),
+        marginHorizontal: responsiveScreenWidth(2),
+    },
+    popupArrowIcon: {
+        color: Colors.White,
+    },
 })
