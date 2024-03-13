@@ -5,7 +5,7 @@ import { responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth
 import Colors from "../../constant/Colors";
 import CustomeFonts from "../../constant/CustomeFonts";
 
-export default function TabBar({ setSelect, select, btn1, btn2 }) {
+export default function TabBar({ setSelect, select, btn1, btn2, btn1Style, btn2Style, btn1TextStyle, btn2TextStyle }) {
     return (
         <View style={styles.tabContainer}>
             <TouchableOpacity onPress={() => setSelect(true)} activeOpacity={0.7} style={styles.tabItemContainer}>
@@ -14,9 +14,10 @@ export default function TabBar({ setSelect, select, btn1, btn2 }) {
                     ...{
                         backgroundColor: select ? Colors.Yellow : Colors.White,
                         borderColor: select ? Colors.Black : Colors.Red
-                    }
+                    },
+                    ...btn1Style
                 }}>
-                    <Text style={styles.tabItemText}>{btn1}</Text>
+                    <Text style={{ ...styles.tabItemText, ...btn1TextStyle }}>{btn1}</Text>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setSelect(false)} activeOpacity={0.7} style={styles.tabItemContainer}>
@@ -25,9 +26,10 @@ export default function TabBar({ setSelect, select, btn1, btn2 }) {
                     ...{
                         backgroundColor: !select ? Colors.Yellow : Colors.White,
                         borderColor: !select ? Colors.Black : Colors.Red
-                    }
+                    },
+                    ...btn2Style
                 }}>
-                    <Text style={styles.tabItemText}>{btn2}</Text>
+                    <Text style={{ ...styles.tabItemText, ...btn2TextStyle }}>{btn2}</Text>
                 </View>
             </TouchableOpacity>
         </View>

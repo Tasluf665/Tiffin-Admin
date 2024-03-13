@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-n
 import React from 'react'
 import { responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions'
 import { Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 import Colors from '../../constant/Colors'
 import CustomeFonts from '../../constant/CustomeFonts';
@@ -27,7 +28,7 @@ export default function OrderItem({ children, image, name, time, date, price, bt
                 </View>
                 <View style={styles.priceDetailsContainer}>
                     <Text style={styles.price}>{price}</Text>
-                    <TouchableOpacity activeOpacity={0.7} style={{ ...styles.btnContainer, ...btnContainerStyle }}>
+                    <TouchableOpacity onPress={() => { router.push("/Notification") }} activeOpacity={0.7} style={{ ...styles.btnContainer, ...btnContainerStyle }}>
                         <Text style={styles.btnText}>Details</Text>
                         <Feather name="arrow-right-circle" size={18} color={Colors.White} />
                     </TouchableOpacity>
