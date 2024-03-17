@@ -3,12 +3,14 @@ import React from 'react'
 import { responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions'
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 import OrderItem from './OrderItem'
 import Colors from '../../constant/Colors'
 import CustomeFonts from '../../constant/CustomeFonts'
 
 export default function OrderTab() {
+
     return (
         <View>
             <ScrollView>
@@ -20,6 +22,9 @@ export default function OrderTab() {
                     timer={"12.00"}
                     price={"৳120"}
                     btnContainerStyle={{ backgroundColor: Colors.Yellow2 }}
+                    handleClick={() => {
+                        router.push("/Notification?stage=stage1")
+                    }}
                 >
                     <View style={styles.statusContainer}>
                         <AntDesign name="closecircle" size={16} color={Colors.Red} />
@@ -34,6 +39,12 @@ export default function OrderTab() {
                     timer={"12.00"}
                     price={"৳120"}
                     btnContainerStyle={{ backgroundColor: Colors.Yellow2 }}
+                    handleClick={() => {
+                        router.push({
+                            pathname: "/Notification",
+                            params: { stage: "stage1" }
+                        })
+                    }}
                 >
                     <View style={styles.statusContainer}>
                         <AntDesign name="closecircle" size={16} color={Colors.Red} />
@@ -49,6 +60,12 @@ export default function OrderTab() {
                     timer={"12.00"}
                     price={"৳120"}
                     btnContainerStyle={{ backgroundColor: Colors.Yellow2 }}
+                    handleClick={() => {
+                        router.push({
+                            pathname: "/Notification",
+                            params: { stage: "stage2" }
+                        })
+                    }}
                 >
                     <View style={styles.statusContainer}>
                         <FontAwesome name="refresh" size={16} color={Colors.Red} />
@@ -65,6 +82,12 @@ export default function OrderTab() {
                     price={"৳120"}
                     btnContainerStyle={{ backgroundColor: Colors.Blue }}
                     imageContainerStyle={{ backgroundColor: Colors.Green }}
+                    handleClick={() => {
+                        router.push({
+                            pathname: "/Notification",
+                            params: { stage: "stage3" }
+                        })
+                    }}
                 >
                     <View style={styles.statusContainer}>
                         <Image
