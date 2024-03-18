@@ -1,20 +1,16 @@
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 import React from 'react'
 import { responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions'
-import { useLocalSearchParams } from "expo-router";
 
 import TabBar from '../../components/common/TabBar';
 import Colors from '../../constant/Colors';
 import CustomeFonts from '../../constant/CustomeFonts';
 import NotificationItem from '../../components/NotificationPageCom/NotificationItem';
 import NotificationProduct from '../../components/NotificationPageCom/NotificationProduct';
+import { useLocalSearchParams } from 'expo-router';
 
 export default function NotificationPage() {
-    const params = useLocalSearchParams();
-    console.log("🚀 ~ NotificationPage ~ router:", params)
-
-
-    const stage = "stage1"
+    const { stage } = useLocalSearchParams();
 
     const [select, setSelect] = React.useState(true)
 

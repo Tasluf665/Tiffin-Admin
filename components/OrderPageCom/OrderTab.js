@@ -10,7 +10,6 @@ import Colors from '../../constant/Colors'
 import CustomeFonts from '../../constant/CustomeFonts'
 
 export default function OrderTab() {
-
     return (
         <View>
             <ScrollView>
@@ -23,7 +22,11 @@ export default function OrderTab() {
                     price={"৳120"}
                     btnContainerStyle={{ backgroundColor: Colors.Yellow2 }}
                     handleClick={() => {
-                        router.push("/Notification?stage=stage1")
+                        router.push({
+                            pathname: "/Notification/NotificationPage",
+                            params: { stage: "stage2" }
+                        })
+
                     }}
                 >
                     <View style={styles.statusContainer}>
@@ -41,7 +44,7 @@ export default function OrderTab() {
                     btnContainerStyle={{ backgroundColor: Colors.Yellow2 }}
                     handleClick={() => {
                         router.push({
-                            pathname: "/Notification",
+                            pathname: "/Notification/NotificationPage",
                             params: { stage: "stage1" }
                         })
                     }}
@@ -63,7 +66,7 @@ export default function OrderTab() {
                     handleClick={() => {
                         router.push({
                             pathname: "/Notification",
-                            params: { stage: "stage2" }
+                            params: { stage: "stage3" }
                         })
                     }}
                 >
@@ -85,7 +88,7 @@ export default function OrderTab() {
                     handleClick={() => {
                         router.push({
                             pathname: "/Notification",
-                            params: { stage: "stage3" }
+                            params: { stage: "stage1" }
                         })
                     }}
                 >
