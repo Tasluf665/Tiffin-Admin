@@ -10,7 +10,7 @@ import NotificationProduct from '../../components/NotificationPageCom/Notificati
 import { useLocalSearchParams } from 'expo-router';
 
 export default function NotificationPage() {
-    const { stage } = useLocalSearchParams();
+    const { stage, data } = useLocalSearchParams();
 
     const [select, setSelect] = React.useState(true)
 
@@ -31,10 +31,14 @@ export default function NotificationPage() {
                         <Text style={styles.riderText}>Please wait for Rider...</Text>
                         <Image style={styles.rider} source={require("../../assets/ApplicationImage/NotificationPage/rider.png")} />
                     </View> :
-                    <View style={styles.topBarRider}>
-                        <Text style={styles.riderText}>On the way...</Text>
-                        <Image style={styles.rider} source={require("../../assets/ApplicationImage/NotificationPage/rider.png")} />
-                    </View>
+                    stage === "stage3" ?
+                        <View style={styles.topBarRider}>
+                            <Text style={styles.riderText}>On the way...</Text>
+                            <Image style={styles.rider} source={require("../../assets/ApplicationImage/NotificationPage/rider.png")} />
+                        </View> :
+                        stage === "stage4" ?
+                            null :
+                            null
                 }
             </View>
 
@@ -43,15 +47,24 @@ export default function NotificationPage() {
                 {stage === "stage1" ?
                     <View style={styles.timerContainer}>
                         <Image style={styles.timer} source={require("../../assets/ApplicationImage/NotificationPage/timer.png")} />
-                        <Text style={styles.timerText}>4.12</Text>
+                        <Text style={styles.timerText}>{data}</Text>
                     </View> :
                     stage === "stage2" ?
                         <View style={styles.receivedTimeContainer}>
-                            <Text style={styles.receivedTime}>Received: 11:42 am</Text>
+                            <Text style={styles.receivedTime}>{data}</Text>
                         </View> :
-                        <View style={styles.receivedTimeContainer}>
-                            <Text style={styles.receivedTime}>Received: 11:42 am</Text>
-                        </View>}
+                        stage === "stage3" ?
+                            <View style={styles.receivedTimeContainer}>
+                                <Text style={styles.receivedTime}>{data}</Text>
+                            </View> :
+                            stage === "stage4" ?
+                                <View style={styles.canceledContainer}>
+                                    <Text style={styles.receivedTime}>{data}</Text>
+                                </View> :
+                                <View style={styles.receivedTimeContainer}>
+                                    <Text style={styles.receivedTime}>{data}</Text>
+                                </View>
+                }
             </View>
             <ScrollView>
                 <NotificationItem
@@ -130,6 +143,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center"
     },
+    canceledContainer: {
+        width: responsiveScreenWidth(45),
+        height: responsiveScreenHeight(4),
+        backgroundColor: Colors.Red,
+        justifyContent: "center",
+        alignItems: "center"
+    },
     receivedTime: {
         fontFamily: CustomeFonts.Segoe_UI_Bold,
         fontSize: responsiveScreenFontSize(1.8),
@@ -141,7 +161,7 @@ const styles = StyleSheet.create({
         resizeMode: "center"
     },
     timerContainer: {
-        width: responsiveScreenWidth(20),
+        width: responsiveScreenWidth(22),
         height: responsiveScreenHeight(3.5),
         backgroundColor: Colors.Black,
         marginRight: responsiveScreenWidth(5),

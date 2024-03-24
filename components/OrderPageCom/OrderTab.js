@@ -24,7 +24,7 @@ export default function OrderTab() {
                     handleClick={() => {
                         router.push({
                             pathname: "/Notification/NotificationPage",
-                            params: { stage: "stage2" }
+                            params: { stage: "stage4", data: "Canceled by Manager" }
                         })
 
                     }}
@@ -45,7 +45,7 @@ export default function OrderTab() {
                     handleClick={() => {
                         router.push({
                             pathname: "/Notification/NotificationPage",
-                            params: { stage: "stage1" }
+                            params: { stage: "stage4", data: "Canceled by Rider" }
                         })
                     }}
                 >
@@ -65,8 +65,8 @@ export default function OrderTab() {
                     btnContainerStyle={{ backgroundColor: Colors.Yellow2 }}
                     handleClick={() => {
                         router.push({
-                            pathname: "/Notification",
-                            params: { stage: "stage3" }
+                            pathname: "/Notification/NotificationPage",
+                            params: { stage: "stage4", data: "Return" }
                         })
                     }}
                 >
@@ -87,8 +87,8 @@ export default function OrderTab() {
                     imageContainerStyle={{ backgroundColor: Colors.Green }}
                     handleClick={() => {
                         router.push({
-                            pathname: "/Notification",
-                            params: { stage: "stage1" }
+                            pathname: "/Notification/NotificationPage",
+                            params: { stage: "stage5", data: "Delivered" }
                         })
                     }}
                 >

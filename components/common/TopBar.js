@@ -19,7 +19,7 @@ export default function TopBar() {
                     />
                 </View>
                 <Text style={styles.text}>Order ({orderNum})</Text>
-                <View style={styles.swithContainer}>
+                {/* <View style={styles.swithContainer}>
                     <Switch
                         value={orderStatus}
                         onValueChange={() => setOrderStatus(state => !state)}
@@ -37,7 +37,7 @@ export default function TopBar() {
                         inActiveText={'Off'}
                         switchWidthMultiplier={2.8}
                     />
-                </View>
+                </View> */}
             </View>
         </View>
     )

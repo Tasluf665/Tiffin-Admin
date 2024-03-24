@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 import React from 'react'
 import { responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions'
+import { router } from 'expo-router';
 
 import OrderItem from './OrderItem'
 import Colors from '../../constant/Colors'
@@ -16,6 +17,13 @@ export default function PendingTab() {
                     time={"Time: 12:27 pm"}
                     date={"Date: 12-03-23"}
                     price={"৳120"}
+                    handleClick={() => {
+                        router.push({
+                            pathname: "/Notification/NotificationPage",
+                            params: { stage: "stage1", data: "12.00" }
+                        })
+
+                    }}
                 >
                     <View style={styles.timerContainer}>
                         <Image
@@ -32,13 +40,20 @@ export default function PendingTab() {
                     date={"Date: 12-03-23"}
                     timer={"12.00"}
                     price={"৳120"}
+                    handleClick={() => {
+                        router.push({
+                            pathname: "/Notification/NotificationPage",
+                            params: { stage: "stage1", data: "12.30" }
+                        })
+
+                    }}
                 >
                     <View style={styles.timerContainer}>
                         <Image
                             source={require("../../assets/ApplicationImage/OrderPage/timer.png")}
                             style={styles.timer}
                         />
-                        <Text style={styles.timerText}>12.00</Text>
+                        <Text style={styles.timerText}>12.30</Text>
                     </View>
                 </OrderItem>
                 <OrderItem
@@ -49,6 +64,13 @@ export default function PendingTab() {
                     timer={"12.00"}
                     price={"৳120"}
                     btnContainerStyle={{ backgroundColor: Colors.Yellow2 }}
+                    handleClick={() => {
+                        router.push({
+                            pathname: "/Notification/NotificationPage",
+                            params: { stage: "stage2", data: "Received: 11:42 am" }
+                        })
+
+                    }}
                 >
                     <View style={styles.statusContainer}>
                         <Image
